@@ -18,7 +18,7 @@ end
 Then(/^I should see "(.*)" before "(.*)" in the movie list$/) do |e1, e2|
   #  ensure that that e1 occurs before e2.
   #  page.body is the entire content of the page as a string.
-  page.body.index(e1).should < page.body.index(e2)
+  expect(page.body.index(e1)).to be < page.body.index(e2)
 end
 
 
@@ -44,6 +44,7 @@ end
 Then(/^I should (not )?see the following movies: (.*)$/) do |no, movie_list|
   # Take a look at web_steps.rb Then /^(?:|I )should see "([^"]*)"$/
   movie_list.split(',').each do |movie|
+    movie = movie.strip
     if no
       expect(page).not_to have_content(movie)
     else
