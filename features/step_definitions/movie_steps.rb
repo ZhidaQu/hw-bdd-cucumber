@@ -30,13 +30,13 @@ When(/I check the following ratings: (.*)/) do |rating_list|
   #   iterate over the ratings and reuse the "When I check..." or
   #   "When I uncheck..." steps in lines 89-95 of web_steps.rb
   rating_list.split(",").each do |rating|
-    step "I check \"ratings_#{rating.strip}\""
+    step %{I check "ratings[#{rating.strip}]"}
   end
 end
 
 When(/I uncheck the following ratings: (.*)/) do |rating_list|
   rating_list.split(',').each do |rating|
-    step "I uncheck \"ratings_#{rating.strip}\""
+    step %{I uncheck "ratings[#{rating.strip}]"}
   end
 end
 
